@@ -95,6 +95,22 @@ class Student extends AppModel{
             )
         )
     );
+    
+    
+    function getAllStudnetCount($school_id) {
+        $query = "SELECT count( * ) as count  , standard_id
+                    FROM `students`
+                    WHERE school_id = ".$school_id."
+                    GROUP BY standard_id 
+                    ORDER BY standard_id ASC";
+        $total = $this->query($query);
+        if(!empty($total))
+               return $total;
+        else
+               return array(); 
+    }
+    
+
 }
 
 ?>

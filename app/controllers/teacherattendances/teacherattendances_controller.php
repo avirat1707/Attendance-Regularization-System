@@ -67,6 +67,61 @@ class TeacherattendancesController  extends AppController{
         $teacherAttendance=$this->paginate('Teacherattendance');
         $this->set(compact('teacherAttendance'));
     }
+    
+    function admin_report(){
+        Configure::write('debug',0);
+        
+        App::import('Model','School');
+        $schoolObj = new School;
+        
+        App::import('Model','Teacher');
+        $teacherObj = new Teacher;
+        
+        $allSchools = $schoolObj->getAllSchools();
+        
+        foreach($allSchools as $key => $val) {
+            $cond = array();
+            $cond['school_id'] = $val['School']['id'];
+            $cond['present'] = 0;
+            $cond['less_cnt'] = 0;
+            $cond['grt_cnt'] = 10;
+            $cond['date'] = date('Y-m-d');
+            
+            $allSchools[$key]['totalTeachers'] = $teacherObj->getTeachesByStatus('count',array('Teacher.school_id'=>$val['School']['id']));
+            
+            $day10Data  = $this->Teacherattendance->monthWiseAttendence($cond);
+            $day10Total = 0;
+            
+            if(!empty($day10Data)) {
+                $day10Total = count($day10Data);
+            }
+            
+            $allSchools[$key]['10days'] = $day10Total;
+            
+            $cond['less_cnt'] = 10;
+            $cond['grt_cnt'] = 20;
+            $day20Data = $this->Teacherattendance->monthWiseAttendence($cond); 
+            
+            $day20Total = 0;
+            
+            if(!empty($day20Data)) {
+                $day20Total = count($day20Data);
+            }
+            $allSchools[$key]['20days'] = $day20Total;
+            
+            $cond['less_cnt'] = 20;
+            $cond['grt_cnt'] = 30;
+            $day30Data = $this->Teacherattendance->monthWiseAttendence($cond);
+            
+            $day30Total = 0;
+            
+            if(!empty($day30Data)) {
+                $day30Total = count($day30Data);
+            }
+            $allSchools[$key]['30days'] = $day30Total;
+        }
+        $this->set('allSchools',$allSchools);
+    }
 }
 
 ?>

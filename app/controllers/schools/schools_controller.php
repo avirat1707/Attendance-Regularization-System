@@ -16,11 +16,11 @@ class SchoolsController extends AppController {
     
     
     function beforeFilter(){
-        if(strtolower($this->action)!="login"){
-            if(!$this->Session->check('School.id')){
-                $this->redirect(array("controller"=>'schools','action'=>'login'));
-            }
-        }
+//        if(strtolower($this->action)!="login"){
+//            if(!$this->Session->check('School.id')){
+//                $this->redirect(array("controller"=>'schools','action'=>'login'));
+//            }
+//        }
     }
     /**
      * Login function to login to the proper school
@@ -55,6 +55,12 @@ class SchoolsController extends AppController {
         $this->Session->delete('School');
         $this->redirect(array('action'=>'login'));
     }
+    
+    function admin_index() {
+       
+       
+    }
+
     
     function index(){
     }

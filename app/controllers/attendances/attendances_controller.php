@@ -46,6 +46,39 @@ class AttendancesController extends AppController{
         $student_count=$this->Attendance->Studentattendance->find('count',array('conditions'=>array('student_id'=>$student_list,'attendancedate'=>$attendanceDate)));
         $this->sendJson($student_count."");
     }
+    
+    function admin_generalReport() {
+        Configure::write('debug',0);    
+        
+        App::import('Model','School');
+        $schoolObj = new School;
+        
+        App::import('Model','Teacher');
+        $teacherObj = new Teacher;
+        
+        App::import('Model','Student');
+        $studObj = new Student;
+        
+        $allSchools = $schoolObj->getAllSchools();
+        
+        foreach($allSchools as $key => $val) {
+            $returnType = 'count';
+            $cond = array();
+            $cond = array('Teacher.sex' => 'M');
+            $maleTeacherCount = $teacherObj->getTeachesByStatus($returnType,$cond);
+            
+            $cond = array();
+            $cond = array('Teacher.sex' => 'F');
+            $femaleTeacherCount = $teacherObj->getTeachesByStatus($returnType,$cond);           
+            
+            $allSchools[$key]['maleTeacherCount'] = $maleTeacherCount;
+            $allSchools[$key]['femaleTeacherCount'] = $femaleTeacherCount;
+            
+            $allStudentCount = $studObj->getAllStudnetCount($val['School']['id']);
+           $allSchools[$key]['studentCount'] = $allStudentCount;
+        }
+        $this->set('allSchools',$allSchools);
+    }
 }
 
 ?>

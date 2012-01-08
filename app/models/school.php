@@ -11,8 +11,12 @@ class School extends AppModel {
         'Block',
         'Cluster',
         'Village',
-        'Category'
+       /* 'Category' */
     );
+    
+    function getAllSchools(){
+        return $this->find('all');
+    }
 }
 
 ?>

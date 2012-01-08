@@ -73,12 +73,23 @@
  */
 class DATABASE_CONFIG {
 
-    var $default = array(
+/*  var $default = array(
+        'driver' => 'mysql',
+        'persistent' => false,
+        'host' => 'aviratcars.db.8561465.hostedresource.com',
+        'login' => 'aviratcars',
+        'password' => 'Srac123#',
+        'database' => 'aviratcars',
+        'prefix' => '',
+        //'encoding' => 'utf8',
+    ); */
+    
+        var $default = array(
         'driver' => 'mysql',
         'persistent' => false,
         'host' => 'localhost',
         'login' => 'root',
-        'password' => 'king',
+        'password' => '',
         'database' => 'ars',
         'prefix' => '',
         //'encoding' => 'utf8',

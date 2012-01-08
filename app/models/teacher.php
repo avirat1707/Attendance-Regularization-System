@@ -105,6 +105,12 @@ class Teacher extends AppModel {
             )
         )
     );
+    
+    
+    
+    function getTeachesByStatus($returnType,$cond) {        
+        return $this->find($returnType,array('conditions'=>$cond));
+    }
 }
 
 ?>
