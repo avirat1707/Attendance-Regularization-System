@@ -239,7 +239,7 @@
                         divModalAddStudentAttendance.html(msg);
                         divModalAddStudentAttendance.dialog({
                             modal:true,
-                            width:'auto',
+                            width:'600',
                             resizable:false,
                             close:function(){
                                 $("#divModalAddStudentAttendance").remove();
