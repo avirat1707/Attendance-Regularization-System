@@ -1,0 +1,333 @@
+/* 
+    Document   : style.css
+    Created on : Dec 17, 2011, 1:04:58 PM
+    Author     : tirthbodawala
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+a{
+    text-decoration: none;
+}
+body {
+    font-family:Verdana, Geneva, sans-serif;
+    font-size:12px;
+}
+.hidden{
+    position:absolute;
+    display:none;
+}
+.green{
+    color:#0B7212 !important;
+}
+.red{
+    color:#7f0101 !important;
+}
+
+/*
+    Styling for the the main Header
+*/
+#divHeader{
+    display: block;
+    height: 130px;
+    margin: 0 auto 24px;
+    width: 581px;
+    
+}
+#divHeader>img{
+    display:block;
+    float:left;
+}
+#divHeader>h3{
+    display: block;
+    float: left;
+    font-family: cursive;
+    font-size: 43px;
+    margin-left: 50px;
+    margin-top: 24px;
+}
+
+/*
+    Styling for the the main default background
+*/
+#divHome{
+    display:block;
+    width:300px;
+    margin:0 auto;
+}
+#divLocations{
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin-top:-100px;
+    margin-left:-50px;
+}
+#divLocations>p{
+    text-align: center;
+}
+.error-message{
+    padding:0;
+    margin:0;
+    color:#7f0101;
+    position:absolute;
+    font-size: 10px;
+}
+
+#divAddTeacher .error-message,#divAddStudent .error-message{
+    margin-left:180px;
+    padding:0px;
+}
+/*
+*   Login Details
+*/
+#divLogin div{
+    padding-top:10px;
+    padding-bottom:5px;
+    padding-left:15px;
+    clear:both;
+}
+#divLogin input[type="text"], #divLogin input[type="password"]{
+    width:200px;
+    padding:3px;
+}
+#divLogin input[type="submit"]{
+    margin-left:110px;
+}
+#divLogin div.submit{
+    padding-bottom: 5px;
+}
+#divLogin label{
+    display:block;
+    width:80px;
+    float:left;
+    margin-top:6px;
+}
+
+/*
+* Styles for School
+*/
+
+#divSchoolHome{
+    display:block;
+    width:960px;
+    margin:0 auto;
+}
+
+#divLogout{
+    float:right;
+    margin-right:20px;
+    margin-top:5px;
+}
+#divLogout>img{
+    display:block;
+    float:left;
+}
+#divLogout>a{
+    display:block;
+    float:left;
+    margin-top:3px;
+}
+/**
+    Manage Teacher & Manage Students
+**/
+#Manage-Teacher,#Manage-Student,#Attendance-Reports{
+    min-height: 490px;
+}
+#divAttendanceReportsTable{
+    display:block;
+    width:660px;
+    height:490px;
+}
+#tblManageTeacher,#tblManageStudent,#tblAttendance,#tblEditTeacherAttendance,#tblAddStudentAttendance{
+    border-collapse:collapse;
+}
+#tblManageTeacher th,#tblManageStudent th,#tblAttendance th ,#tblEditTeacherAttendance th,#tblAddStudentAttendance th{
+    border-spacing: 0px;
+    background: url("../img/jqueryui_images/ui-bg_glass_65_0b9913_1x400.png") repeat-x scroll 50% 50% #0B9913;
+    border-right:1px #000 solid;
+    color: #FFFFFF;
+    font-weight: 300;
+    padding:5px;
+}
+#tblManageTeacher th a,#tblManageStudent th a,#tblAttendance th a,#tblEditTeacherAttendance th a,#tblAddStudentAttendance th a{
+    text-decoration: none;
+    color:#FFF;
+}
+#tblManageTeacher th.thTeacherName,#tblManageStudent th.thStudentName,#tblAttendance th.thAttendanceDate ,#tblEditTeacherAttendance th.thTeacherAttendanceName,#tblAddStudentAttendance th.thStudentAttendanceName{
+    border-top-left-radius: 5px;
+    border:0;
+    border-right:1px #000 solid;
+    width:110px;
+}
+#tblManageStudent th.thStudentName{
+    width:200px;
+}
+#tblManageTeacher th.thTeacherSex,#tblManageStudent th.thStudentSex{
+    width:50px;
+}
+#tblManageTeacher th.thTeacherDOB,#tblManageStudent th.thStudentDOB{
+    width:120px;
+}
+#tblManageTeacher th.thTeacherPCN,#tblManageStudent th.thStudentGR{
+    width:115px;
+}
+#tblManageTeacher th.thTeacherDOJP{
+    width:115px;
+}
+#tblManageTeacher th.thTeacherDOJS{
+    width:115px;
+}
+#tblManageTeacher th.thTeacherSTD,#tblManageStudent th.thStudentSTD{
+    width:50px;
+}
+#tblManageTeacher th.thTeacherEQ,#tblManageStudent th.thStudentDisability{
+    width:50px;
+    overflow: hidden;
+}
+#tblManageTeacher th.thTeacherJobType,#tblManageStudent th.thStudentSection{
+    width:50px;
+    overflow: hidden;
+}
+#tblManageTeacher th.thTeacherStatus,#tblManageStudent th.thStudentStatus,#tblAttendance th.thStudentAttendance,#tblEditTeacherAttendance th.thTeacherAttendanceAbsent,#tblAddStudentAttendance th.thStudentAttendanceAbsent{
+    border-top-right-radius: 5px;
+    border:0;
+    border-left:1px #000 solid;
+    width:50px;
+    overflow: hidden;
+}
+#tblAttendance th.thStudentAttendance{
+    width:380px;
+}
+#tblAttendance th.thTeacherAttendance{
+    width:140px;
+}
+#tblManageTeacher td,#tblManageStudent td,#tblAttendance td,#tblEditTeacherAttendance td,#tblAddStudentAttendance td{
+    border-collapse: collapse;
+    padding:10px 5px;
+    border:1px solid #000;
+}
+#tblEditTeacherAttendance td.tdTeacherAttendancePresent,#tblEditTeacherAttendance td.tdTeacherAttendanceAbsent{
+    text-align: center;
+}
+
+#tblManageTeacher td.tdTeacherName,#tblManageStudent td.tdStudentName{
+    text-align: left;
+}
+#tblManageTeacher td.tdTeacherName a,#tblManageStudent td.tdStudentName a{
+    text-align: left;
+    color:#031E44;
+}
+
+#tblManageTeacher td.tdTeacherName img,#tblManageStudent td.tdStudentName img,#tblAttendance td img{
+    width:16px;
+    height:16px;
+    display: block;
+    float: left;
+    margin-right: 5px;
+    margin-top: 2px;
+    border:0;
+    outline: none;
+}
+#tblAttendance td.tdStudentAttendance,#tblAttendance td.tdTeacherAttendance{
+    text-align: left;
+}
+#tblManageTeacher td.tdTeacherSex,#tblManageStudent td.tdStudentSex{
+    text-align: center;
+}
+#tblManageTeacher td.tdTeacherDOB,#tblManageStudent td.tdStudentDOB{
+    text-align: center;
+}
+#tblManageTeacher td.tdTeacherPCN,#tblManageStudent td.tdStudentGR{
+    text-align: center;
+}
+#tblManageTeacher td.tdTeacherDOJP{
+    text-align: center;
+}
+#tblManageTeacher td.tdTeacherDOJS{
+    text-align: center;
+}
+#tblManageTeacher td.tdTeacherSTD,#tblManageStudent td.tdStudentSTD{
+    text-align: center;
+}
+#tblManageTeacher td.tdTeacherEQ,#tblManageStudent td.tdStudentDisability{
+    text-align: center;
+}
+#tblManageTeacher td.tdTeacherJobType,#tblManageStudent td.tdStudentSection{
+    text-align: center;
+}
+#tblManageTeacher td.tdTeacherStatus, #tblManageStudent td.tdStudentStatus,#tblAttendance td.tdAttendanceDate{
+    text-align: center;
+}
+/*
+*   Styles to add teacher and add students
+*/
+#divAddTeacher label,#divAddStudent label{
+    clear:both;
+    display:block;
+    width:170px;
+    float:left;
+    text-align: right;
+    margin-right:10px;
+}
+#divAddTeacher,#divAddStudent{
+    min-width:400px;
+    margin-left:50px;
+    margin-top:20px;
+}
+#divAddTeacher div,#divAddStudent div{
+    clear:both;
+    padding-bottom:15px;
+    min-height:20px;
+}
+#TeacherattendanceEditForm{
+    margin-top:10px;
+}
+#TeacherattendanceEditForm div.submit{
+    margin-bottom: 10px;
+    margin-left: 100px;
+    margin-top: 20px;
+}
+#divSelectClassSection label{
+    display: block;
+    float:left;
+    width:110px;
+}
+#divSelectClassSection .jqueryuiButton{
+    margin-left:80px;
+}
+.divStudentReport{
+    display:block;
+    float:left;
+}
+#divModalAddStudentAttendance div.submit{
+    margin-bottom: 5px;
+    margin-left: 100px;
+    margin-top: 15px;
+}
+#divModalAddStudentAttendance #StudentattendanceAddForm{
+    margin-top:10px;
+}
+#divModalAddTeacherAttendance div.submit,#divModalEditTeacherAttendance div.submit{
+    margin-left:100px;
+    margin-top:10px;
+    margin-bottom:5px;
+}
+#divAddTeacherAttendance label{
+    display:block;
+    float:left;
+    width:115px;
+    margin-top:4px;
+}
+#divAddTeacherAttendance .jqueryuiButton{
+    margin-left:100px;
+    margin-top:30px;
+    margin-bottom:20px;
+}
+#divAddStudentAttendance .submit{
+    margin-left:100px;
+    margin-top:20px;
+    margin-bottom:5px;
+}
