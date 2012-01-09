@@ -97,20 +97,28 @@ class Student extends AppModel{
     );
     
     
-    function getAllStudnetCount($school_id) {
-        $query = "SELECT count( * ) as count  , standard_id
-                    FROM `students`
-                    WHERE school_id = ".$school_id."
-                    GROUP BY standard_id 
-                    ORDER BY standard_id ASC";
-        $total = $this->query($query);
-        if(!empty($total))
-               return $total;
-        else
-               return array(); 
+    function getAllStudentCount($school_id){
+        $total=$this->find(
+            'all',
+            array(
+                'fields'=>array('COUNT(*) as count','standard_id'),
+                'conditions'=>array(
+                    'school_id'=>$school_id,
+                ),
+                'group'=>array(
+                    'standard_id'
+                ),
+                'order'=>array(
+                    'standard_id'=>'ASC'
+                )
+            )
+        );
+        if(!empty($total)){
+            return $total;
+        }else{
+            return array();
+        }
     }
-    
-
 }
 
 ?>

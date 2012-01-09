@@ -48,7 +48,7 @@ class AttendancesController extends AppController{
     }
     
     function admin_generalReport() {
-        Configure::write('debug',0);    
+        //Configure::write('debug',0);    
         
         App::import('Model','School');
         $schoolObj = new School;
@@ -74,7 +74,7 @@ class AttendancesController extends AppController{
             $allSchools[$key]['maleTeacherCount'] = $maleTeacherCount;
             $allSchools[$key]['femaleTeacherCount'] = $femaleTeacherCount;
             
-            $allStudentCount = $studObj->getAllStudnetCount($val['School']['id']);
+            $allStudentCount = $studObj->getAllStudentCount($val['School']['id']);
            $allSchools[$key]['studentCount'] = $allStudentCount;
         }
         $this->set('allSchools',$allSchools);

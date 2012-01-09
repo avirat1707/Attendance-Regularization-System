@@ -141,10 +141,10 @@ body {
     width:660px;
     height:490px;
 }
-#tblManageTeacher,#tblManageStudent,#tblAttendance,#tblEditTeacherAttendance,#tblAddStudentAttendance{
+#tblManageTeacher,#tblManageStudent,#tblAttendance,#tblEditTeacherAttendance,#tblAddStudentAttendance,#tblGeneralReport{
     border-collapse:collapse;
 }
-#tblManageTeacher th,#tblManageStudent th,#tblAttendance th ,#tblEditTeacherAttendance th,#tblAddStudentAttendance th{
+#tblManageTeacher th,#tblManageStudent th,#tblAttendance th ,#tblEditTeacherAttendance th,#tblAddStudentAttendance th,#tblGeneralReport th{
     border-spacing: 0px;
     background: url("../img/jqueryui_images/ui-bg_glass_65_0b9913_1x400.png") repeat-x scroll 50% 50% #0B9913;
     border-right:1px #000 solid;

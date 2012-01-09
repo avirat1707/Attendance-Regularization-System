@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 08, 2012 at 07:38 PM
+-- Generation Time: Jan 09, 2012 at 09:59 PM
 -- Server version: 5.5.9
 -- PHP Version: 5.3.6
 
@@ -22,10 +22,10 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `administrator`
+-- Table structure for table `administrators`
 --
 
-CREATE TABLE `administrator` (
+CREATE TABLE `administrators` (
   `id` int(11) NOT NULL,
   `name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
   `role` int(2) NOT NULL,
@@ -37,9 +37,10 @@ CREATE TABLE `administrator` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Administrator Data';
 
 --
--- Dumping data for table `administrator`
+-- Dumping data for table `administrators`
 --
 
+INSERT INTO `administrators` VALUES(0, 'Tirth Bodawala', 1, 'tirthbodawala', 'e10adc3949ba59abbe56e057f20f883e', '2012-01-08 00:00:00', '2012-01-08 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -177,6 +178,23 @@ INSERT INTO `locations` VALUES(1, 'Vadodara', '2011-12-17 00:00:00', '2011-12-17
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `reasons`
+--
+
+CREATE TABLE `reasons` (
+  `id` int(11) NOT NULL,
+  `name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Reasons for being absent for teacher/Student';
+
+--
+-- Dumping data for table `reasons`
+--
+
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `schoolcategories`
 --
 
@@ -283,6 +301,8 @@ CREATE TABLE `studentattendances` (
   `attendancedate` datetime NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
+  `reason_id` int(11) NOT NULL,
+  `reason` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Student''s Attendance' AUTO_INCREMENT=27 ;
 
@@ -290,29 +310,29 @@ CREATE TABLE `studentattendances` (
 -- Dumping data for table `studentattendances`
 --
 
-INSERT INTO `studentattendances` VALUES(1, 1, 1, '2011-12-01 00:00:00', '2012-01-03 16:10:05', '2012-01-03 16:19:52');
-INSERT INTO `studentattendances` VALUES(2, 3, 0, '2011-12-01 00:00:00', '2012-01-03 16:10:05', '2012-01-03 16:19:52');
-INSERT INTO `studentattendances` VALUES(3, 4, 1, '2011-12-01 00:00:00', '2012-01-03 16:10:05', '2012-01-03 16:19:52');
-INSERT INTO `studentattendances` VALUES(4, 2, 1, '2011-12-01 00:00:00', '2012-01-03 16:22:53', '2012-01-03 16:22:53');
-INSERT INTO `studentattendances` VALUES(5, 1, 0, '2011-12-02 00:00:00', '2011-12-02 00:00:00', '2012-01-03 18:52:49');
-INSERT INTO `studentattendances` VALUES(6, 3, 1, '2011-12-02 00:00:00', '2012-01-03 17:23:56', '2012-01-03 18:52:49');
-INSERT INTO `studentattendances` VALUES(7, 4, 1, '2011-12-02 00:00:00', '2012-01-03 17:23:56', '2012-01-03 18:52:49');
-INSERT INTO `studentattendances` VALUES(8, 2, 1, '2011-12-02 00:00:00', '2012-01-03 17:26:45', '2012-01-03 17:26:45');
-INSERT INTO `studentattendances` VALUES(9, 1, 1, '2012-01-03 00:00:00', '2012-01-03 20:48:22', '2012-01-03 22:08:27');
-INSERT INTO `studentattendances` VALUES(10, 3, 0, '2012-01-03 00:00:00', '2012-01-03 20:48:22', '2012-01-03 22:08:27');
-INSERT INTO `studentattendances` VALUES(11, 4, 1, '2012-01-03 00:00:00', '2012-01-03 20:48:22', '2012-01-03 22:08:27');
-INSERT INTO `studentattendances` VALUES(17, 4, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:29', '2012-01-08 12:22:43');
-INSERT INTO `studentattendances` VALUES(16, 3, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:29', '2012-01-08 12:22:43');
-INSERT INTO `studentattendances` VALUES(15, 1, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:29', '2012-01-08 12:22:43');
-INSERT INTO `studentattendances` VALUES(18, 1, 0, '2012-01-10 00:00:00', '2012-01-03 22:10:29', '2012-01-03 22:10:29');
-INSERT INTO `studentattendances` VALUES(19, 3, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:29', '2012-01-03 22:10:29');
-INSERT INTO `studentattendances` VALUES(20, 4, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:29', '2012-01-03 22:10:29');
-INSERT INTO `studentattendances` VALUES(21, 1, 1, '2012-01-11 00:00:00', '2012-01-03 22:13:04', '2012-01-08 12:21:53');
-INSERT INTO `studentattendances` VALUES(22, 3, 0, '2012-01-11 00:00:00', '2012-01-03 22:13:04', '2012-01-08 12:21:53');
-INSERT INTO `studentattendances` VALUES(23, 4, 1, '2012-01-11 00:00:00', '2012-01-03 22:13:04', '2012-01-08 12:21:53');
-INSERT INTO `studentattendances` VALUES(24, 1, 1, '2012-01-16 00:00:00', '2012-01-08 12:17:35', '2012-01-08 12:21:42');
-INSERT INTO `studentattendances` VALUES(25, 3, 1, '2012-01-16 00:00:00', '2012-01-08 12:17:35', '2012-01-08 12:21:42');
-INSERT INTO `studentattendances` VALUES(26, 4, 0, '2012-01-16 00:00:00', '2012-01-08 12:17:35', '2012-01-08 12:21:42');
+INSERT INTO `studentattendances` VALUES(1, 1, 1, '2011-12-01 00:00:00', '2012-01-03 16:10:05', '2012-01-03 16:19:52', 0, '');
+INSERT INTO `studentattendances` VALUES(2, 3, 0, '2011-12-01 00:00:00', '2012-01-03 16:10:05', '2012-01-03 16:19:52', 0, '');
+INSERT INTO `studentattendances` VALUES(3, 4, 1, '2011-12-01 00:00:00', '2012-01-03 16:10:05', '2012-01-03 16:19:52', 0, '');
+INSERT INTO `studentattendances` VALUES(4, 2, 1, '2011-12-01 00:00:00', '2012-01-03 16:22:53', '2012-01-03 16:22:53', 0, '');
+INSERT INTO `studentattendances` VALUES(5, 1, 0, '2011-12-02 00:00:00', '2011-12-02 00:00:00', '2012-01-03 18:52:49', 0, '');
+INSERT INTO `studentattendances` VALUES(6, 3, 1, '2011-12-02 00:00:00', '2012-01-03 17:23:56', '2012-01-03 18:52:49', 0, '');
+INSERT INTO `studentattendances` VALUES(7, 4, 1, '2011-12-02 00:00:00', '2012-01-03 17:23:56', '2012-01-03 18:52:49', 0, '');
+INSERT INTO `studentattendances` VALUES(8, 2, 1, '2011-12-02 00:00:00', '2012-01-03 17:26:45', '2012-01-03 17:26:45', 0, '');
+INSERT INTO `studentattendances` VALUES(9, 1, 1, '2012-01-03 00:00:00', '2012-01-03 20:48:22', '2012-01-03 22:08:27', 0, '');
+INSERT INTO `studentattendances` VALUES(10, 3, 0, '2012-01-03 00:00:00', '2012-01-03 20:48:22', '2012-01-03 22:08:27', 0, '');
+INSERT INTO `studentattendances` VALUES(11, 4, 1, '2012-01-03 00:00:00', '2012-01-03 20:48:22', '2012-01-03 22:08:27', 0, '');
+INSERT INTO `studentattendances` VALUES(17, 4, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:29', '2012-01-08 12:22:43', 0, '');
+INSERT INTO `studentattendances` VALUES(16, 3, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:29', '2012-01-08 12:22:43', 0, '');
+INSERT INTO `studentattendances` VALUES(15, 1, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:29', '2012-01-08 12:22:43', 0, '');
+INSERT INTO `studentattendances` VALUES(18, 1, 0, '2012-01-10 00:00:00', '2012-01-03 22:10:29', '2012-01-03 22:10:29', 0, '');
+INSERT INTO `studentattendances` VALUES(19, 3, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:29', '2012-01-03 22:10:29', 0, '');
+INSERT INTO `studentattendances` VALUES(20, 4, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:29', '2012-01-03 22:10:29', 0, '');
+INSERT INTO `studentattendances` VALUES(21, 1, 1, '2012-01-11 00:00:00', '2012-01-03 22:13:04', '2012-01-08 12:21:53', 0, '');
+INSERT INTO `studentattendances` VALUES(22, 3, 0, '2012-01-11 00:00:00', '2012-01-03 22:13:04', '2012-01-08 12:21:53', 0, '');
+INSERT INTO `studentattendances` VALUES(23, 4, 1, '2012-01-11 00:00:00', '2012-01-03 22:13:04', '2012-01-08 12:21:53', 0, '');
+INSERT INTO `studentattendances` VALUES(24, 1, 1, '2012-01-16 00:00:00', '2012-01-08 12:17:35', '2012-01-08 12:21:42', 0, '');
+INSERT INTO `studentattendances` VALUES(25, 3, 1, '2012-01-16 00:00:00', '2012-01-08 12:17:35', '2012-01-08 12:21:42', 0, '');
+INSERT INTO `studentattendances` VALUES(26, 4, 0, '2012-01-16 00:00:00', '2012-01-08 12:17:35', '2012-01-08 12:21:42', 0, '');
 
 -- --------------------------------------------------------
 
@@ -359,6 +379,8 @@ CREATE TABLE `teacherattendances` (
   `attendancedate` datetime NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
+  `reason_id` int(11) NOT NULL,
+  `reason` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=335 ;
 
@@ -366,114 +388,114 @@ CREATE TABLE `teacherattendances` (
 -- Dumping data for table `teacherattendances`
 --
 
-INSERT INTO `teacherattendances` VALUES(46, 67, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:43', '2012-01-08 12:32:37');
-INSERT INTO `teacherattendances` VALUES(45, 68, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:43', '2012-01-08 12:32:37');
-INSERT INTO `teacherattendances` VALUES(44, 10, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:43', '2012-01-08 12:32:37');
-INSERT INTO `teacherattendances` VALUES(43, 9, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:43', '2012-01-08 12:32:37');
-INSERT INTO `teacherattendances` VALUES(42, 8, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:43', '2012-01-08 12:32:37');
-INSERT INTO `teacherattendances` VALUES(41, 7, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:43', '2012-01-08 12:32:37');
-INSERT INTO `teacherattendances` VALUES(40, 6, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:43', '2012-01-08 12:32:37');
-INSERT INTO `teacherattendances` VALUES(39, 5, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:43', '2012-01-08 12:32:37');
-INSERT INTO `teacherattendances` VALUES(38, 4, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:43', '2012-01-08 12:32:37');
-INSERT INTO `teacherattendances` VALUES(37, 3, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:43', '2012-01-08 12:32:37');
-INSERT INTO `teacherattendances` VALUES(36, 2, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:43', '2012-01-08 12:32:37');
-INSERT INTO `teacherattendances` VALUES(35, 1, 0, '2011-12-02 00:00:00', '2012-01-03 19:05:43', '2012-01-08 12:32:37');
-INSERT INTO `teacherattendances` VALUES(23, 1, 1, '2011-12-01 00:00:00', '2012-01-03 18:26:30', '2012-01-08 12:32:35');
-INSERT INTO `teacherattendances` VALUES(24, 2, 1, '2011-12-01 00:00:00', '2012-01-03 18:26:30', '2012-01-08 12:32:35');
-INSERT INTO `teacherattendances` VALUES(25, 3, 1, '2011-12-01 00:00:00', '2012-01-03 18:26:30', '2012-01-08 12:32:35');
-INSERT INTO `teacherattendances` VALUES(26, 4, 1, '2011-12-01 00:00:00', '2012-01-03 18:26:30', '2012-01-08 12:32:35');
-INSERT INTO `teacherattendances` VALUES(27, 5, 0, '2011-12-01 00:00:00', '2012-01-03 18:26:30', '2012-01-08 12:32:35');
-INSERT INTO `teacherattendances` VALUES(28, 6, 0, '2011-12-01 00:00:00', '2012-01-03 18:26:30', '2012-01-08 12:32:35');
-INSERT INTO `teacherattendances` VALUES(29, 7, 0, '2011-12-01 00:00:00', '2012-01-03 18:26:30', '2012-01-08 12:32:35');
-INSERT INTO `teacherattendances` VALUES(30, 8, 1, '2011-12-01 00:00:00', '2012-01-03 18:26:30', '2012-01-08 12:32:35');
-INSERT INTO `teacherattendances` VALUES(31, 9, 0, '2011-12-01 00:00:00', '2012-01-03 18:26:30', '2012-01-08 12:32:35');
-INSERT INTO `teacherattendances` VALUES(32, 10, 1, '2011-12-01 00:00:00', '2012-01-03 18:26:30', '2012-01-08 12:32:35');
-INSERT INTO `teacherattendances` VALUES(33, 68, 1, '2011-12-01 00:00:00', '2012-01-03 18:26:30', '2012-01-08 12:32:35');
-INSERT INTO `teacherattendances` VALUES(34, 67, 0, '2011-12-01 00:00:00', '2012-01-03 18:26:30', '2012-01-08 12:32:35');
-INSERT INTO `teacherattendances` VALUES(47, 1, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:45', '2012-01-03 19:05:45');
-INSERT INTO `teacherattendances` VALUES(48, 2, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:45', '2012-01-03 19:05:45');
-INSERT INTO `teacherattendances` VALUES(49, 3, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:45', '2012-01-03 19:05:45');
-INSERT INTO `teacherattendances` VALUES(50, 4, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:45', '2012-01-03 19:05:45');
-INSERT INTO `teacherattendances` VALUES(51, 5, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:45', '2012-01-03 19:05:45');
-INSERT INTO `teacherattendances` VALUES(52, 6, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:45', '2012-01-03 19:05:45');
-INSERT INTO `teacherattendances` VALUES(53, 7, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:45', '2012-01-03 19:05:45');
-INSERT INTO `teacherattendances` VALUES(54, 8, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:45', '2012-01-03 19:05:45');
-INSERT INTO `teacherattendances` VALUES(55, 9, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:45', '2012-01-03 19:05:45');
-INSERT INTO `teacherattendances` VALUES(56, 10, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:45', '2012-01-03 19:05:45');
-INSERT INTO `teacherattendances` VALUES(57, 68, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:45', '2012-01-03 19:05:45');
-INSERT INTO `teacherattendances` VALUES(58, 67, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:45', '2012-01-03 19:05:45');
-INSERT INTO `teacherattendances` VALUES(334, 67, 1, '2012-01-11 00:00:00', '2012-01-08 12:22:08', '2012-01-08 12:22:30');
-INSERT INTO `teacherattendances` VALUES(333, 68, 1, '2012-01-11 00:00:00', '2012-01-08 12:22:08', '2012-01-08 12:22:30');
-INSERT INTO `teacherattendances` VALUES(332, 10, 1, '2012-01-11 00:00:00', '2012-01-08 12:22:08', '2012-01-08 12:22:30');
-INSERT INTO `teacherattendances` VALUES(331, 9, 1, '2012-01-11 00:00:00', '2012-01-08 12:22:08', '2012-01-08 12:22:30');
-INSERT INTO `teacherattendances` VALUES(330, 8, 1, '2012-01-11 00:00:00', '2012-01-08 12:22:08', '2012-01-08 12:22:30');
-INSERT INTO `teacherattendances` VALUES(329, 7, 1, '2012-01-11 00:00:00', '2012-01-08 12:22:08', '2012-01-08 12:22:30');
-INSERT INTO `teacherattendances` VALUES(328, 6, 1, '2012-01-11 00:00:00', '2012-01-08 12:22:08', '2012-01-08 12:22:30');
-INSERT INTO `teacherattendances` VALUES(327, 5, 0, '2012-01-11 00:00:00', '2012-01-08 12:22:08', '2012-01-08 12:22:30');
-INSERT INTO `teacherattendances` VALUES(326, 4, 1, '2012-01-11 00:00:00', '2012-01-08 12:22:08', '2012-01-08 12:22:30');
-INSERT INTO `teacherattendances` VALUES(325, 3, 1, '2012-01-11 00:00:00', '2012-01-08 12:22:08', '2012-01-08 12:22:30');
-INSERT INTO `teacherattendances` VALUES(324, 2, 1, '2012-01-11 00:00:00', '2012-01-08 12:22:08', '2012-01-08 12:22:30');
-INSERT INTO `teacherattendances` VALUES(323, 1, 0, '2012-01-11 00:00:00', '2012-01-08 12:22:08', '2012-01-08 12:22:30');
-INSERT INTO `teacherattendances` VALUES(322, 67, 1, '2012-01-16 00:00:00', '2012-01-03 22:13:23', '2012-01-08 12:32:31');
-INSERT INTO `teacherattendances` VALUES(321, 68, 1, '2012-01-16 00:00:00', '2012-01-03 22:13:23', '2012-01-08 12:32:31');
-INSERT INTO `teacherattendances` VALUES(320, 10, 1, '2012-01-16 00:00:00', '2012-01-03 22:13:23', '2012-01-08 12:32:31');
-INSERT INTO `teacherattendances` VALUES(319, 9, 1, '2012-01-16 00:00:00', '2012-01-03 22:13:23', '2012-01-08 12:32:31');
-INSERT INTO `teacherattendances` VALUES(318, 8, 1, '2012-01-16 00:00:00', '2012-01-03 22:13:23', '2012-01-08 12:32:31');
-INSERT INTO `teacherattendances` VALUES(317, 7, 1, '2012-01-16 00:00:00', '2012-01-03 22:13:23', '2012-01-08 12:32:31');
-INSERT INTO `teacherattendances` VALUES(316, 6, 1, '2012-01-16 00:00:00', '2012-01-03 22:13:23', '2012-01-08 12:32:31');
-INSERT INTO `teacherattendances` VALUES(315, 5, 1, '2012-01-16 00:00:00', '2012-01-03 22:13:23', '2012-01-08 12:32:31');
-INSERT INTO `teacherattendances` VALUES(314, 4, 1, '2012-01-16 00:00:00', '2012-01-03 22:13:23', '2012-01-08 12:32:31');
-INSERT INTO `teacherattendances` VALUES(313, 3, 0, '2012-01-16 00:00:00', '2012-01-03 22:13:23', '2012-01-08 12:32:31');
-INSERT INTO `teacherattendances` VALUES(312, 2, 0, '2012-01-16 00:00:00', '2012-01-03 22:13:23', '2012-01-08 12:32:31');
-INSERT INTO `teacherattendances` VALUES(311, 1, 0, '2012-01-16 00:00:00', '2012-01-03 22:13:23', '2012-01-08 12:32:31');
-INSERT INTO `teacherattendances` VALUES(310, 67, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:36', '2012-01-03 22:10:36');
-INSERT INTO `teacherattendances` VALUES(309, 68, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:36', '2012-01-03 22:10:36');
-INSERT INTO `teacherattendances` VALUES(308, 10, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:36', '2012-01-03 22:10:36');
-INSERT INTO `teacherattendances` VALUES(307, 9, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:36', '2012-01-03 22:10:36');
-INSERT INTO `teacherattendances` VALUES(306, 8, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:36', '2012-01-03 22:10:36');
-INSERT INTO `teacherattendances` VALUES(305, 7, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:36', '2012-01-03 22:10:36');
-INSERT INTO `teacherattendances` VALUES(304, 6, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:36', '2012-01-03 22:10:36');
-INSERT INTO `teacherattendances` VALUES(303, 5, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:36', '2012-01-03 22:10:36');
-INSERT INTO `teacherattendances` VALUES(302, 4, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:36', '2012-01-03 22:10:36');
-INSERT INTO `teacherattendances` VALUES(301, 3, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:36', '2012-01-03 22:10:36');
-INSERT INTO `teacherattendances` VALUES(300, 2, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:36', '2012-01-03 22:10:36');
-INSERT INTO `teacherattendances` VALUES(299, 1, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:36', '2012-01-03 22:10:36');
-INSERT INTO `teacherattendances` VALUES(298, 67, 0, '2012-01-05 00:00:00', '2012-01-03 21:01:10', '2012-01-03 21:09:14');
-INSERT INTO `teacherattendances` VALUES(297, 68, 0, '2012-01-05 00:00:00', '2012-01-03 21:01:10', '2012-01-03 21:09:14');
-INSERT INTO `teacherattendances` VALUES(296, 10, 1, '2012-01-05 00:00:00', '2012-01-03 21:01:10', '2012-01-03 21:09:13');
-INSERT INTO `teacherattendances` VALUES(295, 9, 1, '2012-01-05 00:00:00', '2012-01-03 21:01:10', '2012-01-03 21:09:13');
-INSERT INTO `teacherattendances` VALUES(294, 8, 1, '2012-01-05 00:00:00', '2012-01-03 21:01:10', '2012-01-03 21:09:13');
-INSERT INTO `teacherattendances` VALUES(293, 7, 1, '2012-01-05 00:00:00', '2012-01-03 21:01:10', '2012-01-03 21:09:13');
-INSERT INTO `teacherattendances` VALUES(292, 6, 1, '2012-01-05 00:00:00', '2012-01-03 21:01:10', '2012-01-03 21:09:13');
-INSERT INTO `teacherattendances` VALUES(291, 5, 1, '2012-01-05 00:00:00', '2012-01-03 21:01:10', '2012-01-03 21:09:13');
-INSERT INTO `teacherattendances` VALUES(290, 4, 1, '2012-01-05 00:00:00', '2012-01-03 21:01:10', '2012-01-03 21:09:13');
-INSERT INTO `teacherattendances` VALUES(289, 3, 1, '2012-01-05 00:00:00', '2012-01-03 21:01:10', '2012-01-03 21:09:13');
-INSERT INTO `teacherattendances` VALUES(288, 2, 1, '2012-01-05 00:00:00', '2012-01-03 21:01:10', '2012-01-03 21:09:13');
-INSERT INTO `teacherattendances` VALUES(287, 1, 0, '2012-01-05 00:00:00', '2012-01-03 21:01:10', '2012-01-03 21:09:13');
-INSERT INTO `teacherattendances` VALUES(286, 67, 1, '2012-01-04 00:00:00', '2012-01-03 20:50:01', '2012-01-03 21:09:33');
-INSERT INTO `teacherattendances` VALUES(285, 68, 0, '2012-01-04 00:00:00', '2012-01-03 20:50:01', '2012-01-03 21:09:33');
-INSERT INTO `teacherattendances` VALUES(284, 10, 1, '2012-01-04 00:00:00', '2012-01-03 20:50:01', '2012-01-03 21:09:33');
-INSERT INTO `teacherattendances` VALUES(283, 9, 1, '2012-01-04 00:00:00', '2012-01-03 20:50:01', '2012-01-03 21:09:33');
-INSERT INTO `teacherattendances` VALUES(282, 8, 1, '2012-01-04 00:00:00', '2012-01-03 20:50:01', '2012-01-03 21:09:33');
-INSERT INTO `teacherattendances` VALUES(281, 7, 0, '2012-01-04 00:00:00', '2012-01-03 20:50:01', '2012-01-03 21:09:33');
-INSERT INTO `teacherattendances` VALUES(280, 6, 1, '2012-01-04 00:00:00', '2012-01-03 20:50:01', '2012-01-03 21:09:33');
-INSERT INTO `teacherattendances` VALUES(279, 5, 1, '2012-01-04 00:00:00', '2012-01-03 20:50:01', '2012-01-03 21:09:33');
-INSERT INTO `teacherattendances` VALUES(278, 4, 1, '2012-01-04 00:00:00', '2012-01-03 20:50:01', '2012-01-03 21:09:33');
-INSERT INTO `teacherattendances` VALUES(277, 3, 1, '2012-01-04 00:00:00', '2012-01-03 20:50:01', '2012-01-03 21:09:33');
-INSERT INTO `teacherattendances` VALUES(276, 2, 1, '2012-01-04 00:00:00', '2012-01-03 20:50:01', '2012-01-03 21:09:33');
-INSERT INTO `teacherattendances` VALUES(275, 1, 1, '2012-01-04 00:00:00', '2012-01-03 20:50:01', '2012-01-03 21:09:33');
-INSERT INTO `teacherattendances` VALUES(274, 67, 1, '2012-01-03 00:00:00', '2012-01-03 20:48:07', '2012-01-08 15:31:19');
-INSERT INTO `teacherattendances` VALUES(273, 68, 1, '2012-01-03 00:00:00', '2012-01-03 20:48:07', '2012-01-08 15:31:19');
-INSERT INTO `teacherattendances` VALUES(272, 10, 1, '2012-01-03 00:00:00', '2012-01-03 20:48:07', '2012-01-08 15:31:19');
-INSERT INTO `teacherattendances` VALUES(271, 9, 0, '2012-01-03 00:00:00', '2012-01-03 20:48:07', '2012-01-08 15:31:19');
-INSERT INTO `teacherattendances` VALUES(270, 8, 1, '2012-01-03 00:00:00', '2012-01-03 20:48:07', '2012-01-08 15:31:19');
-INSERT INTO `teacherattendances` VALUES(269, 7, 1, '2012-01-03 00:00:00', '2012-01-03 20:48:07', '2012-01-08 15:31:19');
-INSERT INTO `teacherattendances` VALUES(268, 6, 1, '2012-01-03 00:00:00', '2012-01-03 20:48:07', '2012-01-08 15:31:19');
-INSERT INTO `teacherattendances` VALUES(267, 5, 1, '2012-01-03 00:00:00', '2012-01-03 20:48:07', '2012-01-08 15:31:19');
-INSERT INTO `teacherattendances` VALUES(266, 4, 0, '2012-01-03 00:00:00', '2012-01-03 20:48:07', '2012-01-08 15:31:19');
-INSERT INTO `teacherattendances` VALUES(265, 3, 0, '2012-01-03 00:00:00', '2012-01-03 20:48:07', '2012-01-08 15:31:19');
-INSERT INTO `teacherattendances` VALUES(264, 2, 0, '2012-01-03 00:00:00', '2012-01-03 20:48:07', '2012-01-08 15:31:19');
-INSERT INTO `teacherattendances` VALUES(263, 1, 1, '2012-01-03 00:00:00', '2012-01-03 20:48:07', '2012-01-08 15:31:19');
+INSERT INTO `teacherattendances` VALUES(46, 67, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:43', '2012-01-08 12:32:37', 0, '');
+INSERT INTO `teacherattendances` VALUES(45, 68, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:43', '2012-01-08 12:32:37', 0, '');
+INSERT INTO `teacherattendances` VALUES(44, 10, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:43', '2012-01-08 12:32:37', 0, '');
+INSERT INTO `teacherattendances` VALUES(43, 9, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:43', '2012-01-08 12:32:37', 0, '');
+INSERT INTO `teacherattendances` VALUES(42, 8, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:43', '2012-01-08 12:32:37', 0, '');
+INSERT INTO `teacherattendances` VALUES(41, 7, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:43', '2012-01-08 12:32:37', 0, '');
+INSERT INTO `teacherattendances` VALUES(40, 6, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:43', '2012-01-08 12:32:37', 0, '');
+INSERT INTO `teacherattendances` VALUES(39, 5, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:43', '2012-01-08 12:32:37', 0, '');
+INSERT INTO `teacherattendances` VALUES(38, 4, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:43', '2012-01-08 12:32:37', 0, '');
+INSERT INTO `teacherattendances` VALUES(37, 3, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:43', '2012-01-08 12:32:37', 0, '');
+INSERT INTO `teacherattendances` VALUES(36, 2, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:43', '2012-01-08 12:32:37', 0, '');
+INSERT INTO `teacherattendances` VALUES(35, 1, 0, '2011-12-02 00:00:00', '2012-01-03 19:05:43', '2012-01-08 12:32:37', 0, '');
+INSERT INTO `teacherattendances` VALUES(23, 1, 1, '2011-12-01 00:00:00', '2012-01-03 18:26:30', '2012-01-08 12:32:35', 0, '');
+INSERT INTO `teacherattendances` VALUES(24, 2, 1, '2011-12-01 00:00:00', '2012-01-03 18:26:30', '2012-01-08 12:32:35', 0, '');
+INSERT INTO `teacherattendances` VALUES(25, 3, 1, '2011-12-01 00:00:00', '2012-01-03 18:26:30', '2012-01-08 12:32:35', 0, '');
+INSERT INTO `teacherattendances` VALUES(26, 4, 1, '2011-12-01 00:00:00', '2012-01-03 18:26:30', '2012-01-08 12:32:35', 0, '');
+INSERT INTO `teacherattendances` VALUES(27, 5, 0, '2011-12-01 00:00:00', '2012-01-03 18:26:30', '2012-01-08 12:32:35', 0, '');
+INSERT INTO `teacherattendances` VALUES(28, 6, 0, '2011-12-01 00:00:00', '2012-01-03 18:26:30', '2012-01-08 12:32:35', 0, '');
+INSERT INTO `teacherattendances` VALUES(29, 7, 0, '2011-12-01 00:00:00', '2012-01-03 18:26:30', '2012-01-08 12:32:35', 0, '');
+INSERT INTO `teacherattendances` VALUES(30, 8, 1, '2011-12-01 00:00:00', '2012-01-03 18:26:30', '2012-01-08 12:32:35', 0, '');
+INSERT INTO `teacherattendances` VALUES(31, 9, 0, '2011-12-01 00:00:00', '2012-01-03 18:26:30', '2012-01-08 12:32:35', 0, '');
+INSERT INTO `teacherattendances` VALUES(32, 10, 1, '2011-12-01 00:00:00', '2012-01-03 18:26:30', '2012-01-08 12:32:35', 0, '');
+INSERT INTO `teacherattendances` VALUES(33, 68, 1, '2011-12-01 00:00:00', '2012-01-03 18:26:30', '2012-01-08 12:32:35', 0, '');
+INSERT INTO `teacherattendances` VALUES(34, 67, 0, '2011-12-01 00:00:00', '2012-01-03 18:26:30', '2012-01-08 12:32:35', 0, '');
+INSERT INTO `teacherattendances` VALUES(47, 1, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:45', '2012-01-03 19:05:45', 0, '');
+INSERT INTO `teacherattendances` VALUES(48, 2, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:45', '2012-01-03 19:05:45', 0, '');
+INSERT INTO `teacherattendances` VALUES(49, 3, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:45', '2012-01-03 19:05:45', 0, '');
+INSERT INTO `teacherattendances` VALUES(50, 4, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:45', '2012-01-03 19:05:45', 0, '');
+INSERT INTO `teacherattendances` VALUES(51, 5, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:45', '2012-01-03 19:05:45', 0, '');
+INSERT INTO `teacherattendances` VALUES(52, 6, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:45', '2012-01-03 19:05:45', 0, '');
+INSERT INTO `teacherattendances` VALUES(53, 7, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:45', '2012-01-03 19:05:45', 0, '');
+INSERT INTO `teacherattendances` VALUES(54, 8, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:45', '2012-01-03 19:05:45', 0, '');
+INSERT INTO `teacherattendances` VALUES(55, 9, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:45', '2012-01-03 19:05:45', 0, '');
+INSERT INTO `teacherattendances` VALUES(56, 10, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:45', '2012-01-03 19:05:45', 0, '');
+INSERT INTO `teacherattendances` VALUES(57, 68, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:45', '2012-01-03 19:05:45', 0, '');
+INSERT INTO `teacherattendances` VALUES(58, 67, 1, '2011-12-02 00:00:00', '2012-01-03 19:05:45', '2012-01-03 19:05:45', 0, '');
+INSERT INTO `teacherattendances` VALUES(334, 67, 1, '2012-01-11 00:00:00', '2012-01-08 12:22:08', '2012-01-08 12:22:30', 0, '');
+INSERT INTO `teacherattendances` VALUES(333, 68, 1, '2012-01-11 00:00:00', '2012-01-08 12:22:08', '2012-01-08 12:22:30', 0, '');
+INSERT INTO `teacherattendances` VALUES(332, 10, 1, '2012-01-11 00:00:00', '2012-01-08 12:22:08', '2012-01-08 12:22:30', 0, '');
+INSERT INTO `teacherattendances` VALUES(331, 9, 1, '2012-01-11 00:00:00', '2012-01-08 12:22:08', '2012-01-08 12:22:30', 0, '');
+INSERT INTO `teacherattendances` VALUES(330, 8, 1, '2012-01-11 00:00:00', '2012-01-08 12:22:08', '2012-01-08 12:22:30', 0, '');
+INSERT INTO `teacherattendances` VALUES(329, 7, 1, '2012-01-11 00:00:00', '2012-01-08 12:22:08', '2012-01-08 12:22:30', 0, '');
+INSERT INTO `teacherattendances` VALUES(328, 6, 1, '2012-01-11 00:00:00', '2012-01-08 12:22:08', '2012-01-08 12:22:30', 0, '');
+INSERT INTO `teacherattendances` VALUES(327, 5, 0, '2012-01-11 00:00:00', '2012-01-08 12:22:08', '2012-01-08 12:22:30', 0, '');
+INSERT INTO `teacherattendances` VALUES(326, 4, 1, '2012-01-11 00:00:00', '2012-01-08 12:22:08', '2012-01-08 12:22:30', 0, '');
+INSERT INTO `teacherattendances` VALUES(325, 3, 1, '2012-01-11 00:00:00', '2012-01-08 12:22:08', '2012-01-08 12:22:30', 0, '');
+INSERT INTO `teacherattendances` VALUES(324, 2, 1, '2012-01-11 00:00:00', '2012-01-08 12:22:08', '2012-01-08 12:22:30', 0, '');
+INSERT INTO `teacherattendances` VALUES(323, 1, 0, '2012-01-11 00:00:00', '2012-01-08 12:22:08', '2012-01-08 12:22:30', 0, '');
+INSERT INTO `teacherattendances` VALUES(322, 67, 1, '2012-01-16 00:00:00', '2012-01-03 22:13:23', '2012-01-08 12:32:31', 0, '');
+INSERT INTO `teacherattendances` VALUES(321, 68, 1, '2012-01-16 00:00:00', '2012-01-03 22:13:23', '2012-01-08 12:32:31', 0, '');
+INSERT INTO `teacherattendances` VALUES(320, 10, 1, '2012-01-16 00:00:00', '2012-01-03 22:13:23', '2012-01-08 12:32:31', 0, '');
+INSERT INTO `teacherattendances` VALUES(319, 9, 1, '2012-01-16 00:00:00', '2012-01-03 22:13:23', '2012-01-08 12:32:31', 0, '');
+INSERT INTO `teacherattendances` VALUES(318, 8, 1, '2012-01-16 00:00:00', '2012-01-03 22:13:23', '2012-01-08 12:32:31', 0, '');
+INSERT INTO `teacherattendances` VALUES(317, 7, 1, '2012-01-16 00:00:00', '2012-01-03 22:13:23', '2012-01-08 12:32:31', 0, '');
+INSERT INTO `teacherattendances` VALUES(316, 6, 1, '2012-01-16 00:00:00', '2012-01-03 22:13:23', '2012-01-08 12:32:31', 0, '');
+INSERT INTO `teacherattendances` VALUES(315, 5, 1, '2012-01-16 00:00:00', '2012-01-03 22:13:23', '2012-01-08 12:32:31', 0, '');
+INSERT INTO `teacherattendances` VALUES(314, 4, 1, '2012-01-16 00:00:00', '2012-01-03 22:13:23', '2012-01-08 12:32:31', 0, '');
+INSERT INTO `teacherattendances` VALUES(313, 3, 0, '2012-01-16 00:00:00', '2012-01-03 22:13:23', '2012-01-08 12:32:31', 0, '');
+INSERT INTO `teacherattendances` VALUES(312, 2, 0, '2012-01-16 00:00:00', '2012-01-03 22:13:23', '2012-01-08 12:32:31', 0, '');
+INSERT INTO `teacherattendances` VALUES(311, 1, 0, '2012-01-16 00:00:00', '2012-01-03 22:13:23', '2012-01-08 12:32:31', 0, '');
+INSERT INTO `teacherattendances` VALUES(310, 67, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:36', '2012-01-03 22:10:36', 0, '');
+INSERT INTO `teacherattendances` VALUES(309, 68, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:36', '2012-01-03 22:10:36', 0, '');
+INSERT INTO `teacherattendances` VALUES(308, 10, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:36', '2012-01-03 22:10:36', 0, '');
+INSERT INTO `teacherattendances` VALUES(307, 9, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:36', '2012-01-03 22:10:36', 0, '');
+INSERT INTO `teacherattendances` VALUES(306, 8, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:36', '2012-01-03 22:10:36', 0, '');
+INSERT INTO `teacherattendances` VALUES(305, 7, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:36', '2012-01-03 22:10:36', 0, '');
+INSERT INTO `teacherattendances` VALUES(304, 6, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:36', '2012-01-03 22:10:36', 0, '');
+INSERT INTO `teacherattendances` VALUES(303, 5, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:36', '2012-01-03 22:10:36', 0, '');
+INSERT INTO `teacherattendances` VALUES(302, 4, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:36', '2012-01-03 22:10:36', 0, '');
+INSERT INTO `teacherattendances` VALUES(301, 3, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:36', '2012-01-03 22:10:36', 0, '');
+INSERT INTO `teacherattendances` VALUES(300, 2, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:36', '2012-01-03 22:10:36', 0, '');
+INSERT INTO `teacherattendances` VALUES(299, 1, 1, '2012-01-10 00:00:00', '2012-01-03 22:10:36', '2012-01-03 22:10:36', 0, '');
+INSERT INTO `teacherattendances` VALUES(298, 67, 0, '2012-01-05 00:00:00', '2012-01-03 21:01:10', '2012-01-03 21:09:14', 0, '');
+INSERT INTO `teacherattendances` VALUES(297, 68, 0, '2012-01-05 00:00:00', '2012-01-03 21:01:10', '2012-01-03 21:09:14', 0, '');
+INSERT INTO `teacherattendances` VALUES(296, 10, 1, '2012-01-05 00:00:00', '2012-01-03 21:01:10', '2012-01-03 21:09:13', 0, '');
+INSERT INTO `teacherattendances` VALUES(295, 9, 1, '2012-01-05 00:00:00', '2012-01-03 21:01:10', '2012-01-03 21:09:13', 0, '');
+INSERT INTO `teacherattendances` VALUES(294, 8, 1, '2012-01-05 00:00:00', '2012-01-03 21:01:10', '2012-01-03 21:09:13', 0, '');
+INSERT INTO `teacherattendances` VALUES(293, 7, 1, '2012-01-05 00:00:00', '2012-01-03 21:01:10', '2012-01-03 21:09:13', 0, '');
+INSERT INTO `teacherattendances` VALUES(292, 6, 1, '2012-01-05 00:00:00', '2012-01-03 21:01:10', '2012-01-03 21:09:13', 0, '');
+INSERT INTO `teacherattendances` VALUES(291, 5, 1, '2012-01-05 00:00:00', '2012-01-03 21:01:10', '2012-01-03 21:09:13', 0, '');
+INSERT INTO `teacherattendances` VALUES(290, 4, 1, '2012-01-05 00:00:00', '2012-01-03 21:01:10', '2012-01-03 21:09:13', 0, '');
+INSERT INTO `teacherattendances` VALUES(289, 3, 1, '2012-01-05 00:00:00', '2012-01-03 21:01:10', '2012-01-03 21:09:13', 0, '');
+INSERT INTO `teacherattendances` VALUES(288, 2, 1, '2012-01-05 00:00:00', '2012-01-03 21:01:10', '2012-01-03 21:09:13', 0, '');
+INSERT INTO `teacherattendances` VALUES(287, 1, 0, '2012-01-05 00:00:00', '2012-01-03 21:01:10', '2012-01-03 21:09:13', 0, '');
+INSERT INTO `teacherattendances` VALUES(286, 67, 1, '2012-01-04 00:00:00', '2012-01-03 20:50:01', '2012-01-03 21:09:33', 0, '');
+INSERT INTO `teacherattendances` VALUES(285, 68, 0, '2012-01-04 00:00:00', '2012-01-03 20:50:01', '2012-01-03 21:09:33', 0, '');
+INSERT INTO `teacherattendances` VALUES(284, 10, 1, '2012-01-04 00:00:00', '2012-01-03 20:50:01', '2012-01-03 21:09:33', 0, '');
+INSERT INTO `teacherattendances` VALUES(283, 9, 1, '2012-01-04 00:00:00', '2012-01-03 20:50:01', '2012-01-03 21:09:33', 0, '');
+INSERT INTO `teacherattendances` VALUES(282, 8, 1, '2012-01-04 00:00:00', '2012-01-03 20:50:01', '2012-01-03 21:09:33', 0, '');
+INSERT INTO `teacherattendances` VALUES(281, 7, 0, '2012-01-04 00:00:00', '2012-01-03 20:50:01', '2012-01-03 21:09:33', 0, '');
+INSERT INTO `teacherattendances` VALUES(280, 6, 1, '2012-01-04 00:00:00', '2012-01-03 20:50:01', '2012-01-03 21:09:33', 0, '');
+INSERT INTO `teacherattendances` VALUES(279, 5, 1, '2012-01-04 00:00:00', '2012-01-03 20:50:01', '2012-01-03 21:09:33', 0, '');
+INSERT INTO `teacherattendances` VALUES(278, 4, 1, '2012-01-04 00:00:00', '2012-01-03 20:50:01', '2012-01-03 21:09:33', 0, '');
+INSERT INTO `teacherattendances` VALUES(277, 3, 1, '2012-01-04 00:00:00', '2012-01-03 20:50:01', '2012-01-03 21:09:33', 0, '');
+INSERT INTO `teacherattendances` VALUES(276, 2, 1, '2012-01-04 00:00:00', '2012-01-03 20:50:01', '2012-01-03 21:09:33', 0, '');
+INSERT INTO `teacherattendances` VALUES(275, 1, 1, '2012-01-04 00:00:00', '2012-01-03 20:50:01', '2012-01-03 21:09:33', 0, '');
+INSERT INTO `teacherattendances` VALUES(274, 67, 1, '2012-01-03 00:00:00', '2012-01-03 20:48:07', '2012-01-08 15:31:19', 0, '');
+INSERT INTO `teacherattendances` VALUES(273, 68, 1, '2012-01-03 00:00:00', '2012-01-03 20:48:07', '2012-01-08 15:31:19', 0, '');
+INSERT INTO `teacherattendances` VALUES(272, 10, 1, '2012-01-03 00:00:00', '2012-01-03 20:48:07', '2012-01-08 15:31:19', 0, '');
+INSERT INTO `teacherattendances` VALUES(271, 9, 0, '2012-01-03 00:00:00', '2012-01-03 20:48:07', '2012-01-08 15:31:19', 0, '');
+INSERT INTO `teacherattendances` VALUES(270, 8, 1, '2012-01-03 00:00:00', '2012-01-03 20:48:07', '2012-01-08 15:31:19', 0, '');
+INSERT INTO `teacherattendances` VALUES(269, 7, 1, '2012-01-03 00:00:00', '2012-01-03 20:48:07', '2012-01-08 15:31:19', 0, '');
+INSERT INTO `teacherattendances` VALUES(268, 6, 1, '2012-01-03 00:00:00', '2012-01-03 20:48:07', '2012-01-08 15:31:19', 0, '');
+INSERT INTO `teacherattendances` VALUES(267, 5, 1, '2012-01-03 00:00:00', '2012-01-03 20:48:07', '2012-01-08 15:31:19', 0, '');
+INSERT INTO `teacherattendances` VALUES(266, 4, 0, '2012-01-03 00:00:00', '2012-01-03 20:48:07', '2012-01-08 15:31:19', 0, '');
+INSERT INTO `teacherattendances` VALUES(265, 3, 0, '2012-01-03 00:00:00', '2012-01-03 20:48:07', '2012-01-08 15:31:19', 0, '');
+INSERT INTO `teacherattendances` VALUES(264, 2, 0, '2012-01-03 00:00:00', '2012-01-03 20:48:07', '2012-01-08 15:31:19', 0, '');
+INSERT INTO `teacherattendances` VALUES(263, 1, 1, '2012-01-03 00:00:00', '2012-01-03 20:48:07', '2012-01-08 15:31:19', 0, '');
 
 -- --------------------------------------------------------
 
