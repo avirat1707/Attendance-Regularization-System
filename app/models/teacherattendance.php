@@ -13,7 +13,8 @@
 class Teacherattendance  extends AppModel{
     var $name="Teacherattendance";
     var $belongsTo=array(
-        'Teacher'
+        'Teacher',
+        'Reason'
     );
     
     function monthWiseAttendence($cond = array()){        

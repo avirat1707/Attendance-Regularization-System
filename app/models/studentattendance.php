@@ -9,7 +9,8 @@
 class Studentattendance extends AppModel{
     var $name="Studentattendance";
     var $belongsTo=array(
-        'Student'
+        'Student',
+        'Reason'
     );
 }
 
