@@ -1,39 +1,27 @@
-<table id="tblGeneralReport">
+<table id="tblGeneralReport" class="commonTable">
     <thead>
         <tr>
-            <th>Block Name</th>
-            <th>School Name</th>
-            <th>Dise Code</th>
-            <th>Cluster</th>
-            <th>Village</th>
-            <th>Category</th>
-            <th align="center">Teachers
-                <br />
-                <table>
-                    <tr>
-                        <td width="33%">Male</td>
-                        <td width="33%">Female</td>
-                        <td width="33%">Total</td>
-
-                    </tr>
-                </table>
-            </th>
-            <th align="center">Entolment
-                <br />
-                <table>
-                    <tr>
-                        <td  width="12%">Std -1</td>
-                        <td  width="12%">Std -2</td>
-                        <td  width="12%">Std -3</td>
-                        <td  width="12%">Std -4</td>
-                        <td  width="12%">Std -5</td>
-                        <td  width="12%">Std -6</td>
-                        <td  width="12%">Std -7</td>
-                        <td  width="12%">Std -8</td>
-                    </tr>
-                </table>
-            </th>
-            <th>total</th>
+            <th rowspan="2" class="first">Block Name</th>
+            <th rowspan="2">School Name</th>
+            <th rowspan="2">Dise Code</th>
+            <th rowspan="2">Cluster</th>
+            <th rowspan="2">Village</th>
+            <th colspan="3" align="center">Teachers</th>
+            <th colspan="8" align="center">Enrollment</th>
+            <th rowspan="2" class="last">total</th>
+        </tr>
+        <tr>
+            <th>M</th>
+            <th>F</th>
+            <th>Total</th>
+            <th>S-1</th>
+            <th>S-2</th>
+            <th>S-3</th>
+            <th>S-4</th>
+            <th>S-5</th>
+            <th>S-6</th>
+            <th>S-7</th>
+            <th>S-8</th>
         </tr>
     </thead>
     <tbody>
@@ -42,42 +30,29 @@
             <tr>
             <td><?php echo $val['Block']['name']; ?></td>
             <td><?php echo $val['School']['name']; ?></td>
-            <td></td>
+            <td><?php echo $val['School']['disecode']; ?></td>
             <td><?php echo $val['Cluster']['name']; ?></td>
             <td><?php echo $val['Village']['name']; ?></td>
-            <td></td>
-            <td aling="center">
-                <table width="100%">
-                    <tr>
-                        <td width="33%" align="center"><?php echo $val['maleTeacherCount']; ?></td>
-                        <td width="33%" align="center"><?php echo $val['femaleTeacherCount']; ?></td>
-                        <td width="33%" align="center"><?php echo ($val['maleTeacherCount'] + $val['femaleTeacherCount']); ?></td>
-                    </tr>
-                </table>    
-            </td>
-            <td align="center">
-                <table width="100%">
-                    <tr>
-                       <?php 
-                       $total = 0;
-                        for($i =1 ; $i <= 8; $i++) {
-                            echo '<td width="12%" align="center">';
-                          foreach($val['studentCount'] as $k => $v) { 
-                              if(isset($v['students']['standard_id'])) {
-                                  if($v['students']['standard_id'] == $i) {
-                                    echo $v[0]['count'];  
-                                    $total += $v[0]['count'];
-                                    break;
-                                  }else
-                                     echo 0;   
-                              }  
-                            }
-                            echo '</td>';
-                        }
-                       ?>
-                    </tr>
-                </table>
-            </td>
+            <td><?php echo $val['maleTeacherCount']; ?></td>
+            <td><?php echo $val['femaleTeacherCount']; ?></td>
+            <td><?php echo ($val['maleTeacherCount'] + $val['femaleTeacherCount']); ?></td>
+            <?php 
+                $total = 0;
+                for($i =1 ; $i <= 8; $i++) {
+                    echo '<td>';
+                  foreach($val['studentCount'] as $k => $v) { 
+                      if(isset($v['Student']['standard_id'])) {
+                          if($v['Student']['standard_id'] == $i) {
+                            echo $v[0]['count'];  
+                            $total += $v[0]['count'];
+                            break;
+                          }else
+                             echo 0;   
+                      }  
+                    }
+                    echo '</td>';
+                }
+            ?>
             <td align="center"><?php echo $total; ?></td>    
             </tr>
             <?php } 

@@ -112,7 +112,7 @@ body {
 
 #divSchoolHome{
     display:block;
-    width:960px;
+    width:948px;
     margin:0 auto;
 }
 
@@ -141,10 +141,13 @@ body {
     width:660px;
     height:490px;
 }
-#tblManageTeacher,#tblManageStudent,#tblAttendance,#tblEditTeacherAttendance,#tblAddStudentAttendance,#tblGeneralReport{
+#tblManageTeacher,#tblManageStudent,#tblAttendance,#tblEditTeacherAttendance,#tblAddStudentAttendance,table.commonTable{
     border-collapse:collapse;
 }
-#tblManageTeacher th,#tblManageStudent th,#tblAttendance th ,#tblEditTeacherAttendance th,#tblAddStudentAttendance th,#tblGeneralReport th{
+table.commonTable>thead>tr:nth-child(2){
+    border-top:1px #000 solid;
+}
+#tblManageTeacher th,#tblManageStudent th,#tblAttendance th ,#tblEditTeacherAttendance th,#tblAddStudentAttendance th,table.commonTable th{
     border-spacing: 0px;
     background: url("../img/jqueryui_images/ui-bg_glass_65_0b9913_1x400.png") repeat-x scroll 50% 50% #0B9913;
     border-right:1px #000 solid;
@@ -152,11 +155,11 @@ body {
     font-weight: 300;
     padding:5px;
 }
-#tblManageTeacher th a,#tblManageStudent th a,#tblAttendance th a,#tblEditTeacherAttendance th a,#tblAddStudentAttendance th a{
+#tblManageTeacher th a,#tblManageStudent th a,#tblAttendance th a,#tblEditTeacherAttendance th a,table.commonTable th a{
     text-decoration: none;
     color:#FFF;
 }
-#tblManageTeacher th.thTeacherName,#tblManageStudent th.thStudentName,#tblAttendance th.thAttendanceDate ,#tblEditTeacherAttendance th.thTeacherAttendanceName,#tblAddStudentAttendance th.thStudentAttendanceName{
+#tblManageTeacher th.thTeacherName,#tblManageStudent th.thStudentName,#tblAttendance th.thAttendanceDate ,#tblEditTeacherAttendance th.thTeacherAttendanceName,#tblAddStudentAttendance th.thStudentAttendanceName,table.commonTable th.first{
     border-top-left-radius: 5px;
     border:0;
     border-right:1px #000 solid;
@@ -191,7 +194,7 @@ body {
     width:50px;
     overflow: hidden;
 }
-#tblManageTeacher th.thTeacherStatus,#tblManageStudent th.thStudentStatus,#tblAttendance th.thStudentAttendance,#tblEditTeacherAttendance th.thTeacherAttendanceAbsent,#tblAddStudentAttendance th.thStudentAttendanceAbsent{
+#tblManageTeacher th.thTeacherStatus,#tblManageStudent th.thStudentStatus,#tblAttendance th.thStudentAttendance,#tblEditTeacherAttendance th.thTeacherAttendanceAbsent,#tblAddStudentAttendance th.thStudentAttendanceAbsent,.commonTable th.last{
     border-top-right-radius: 5px;
     border:0;
     border-left:1px #000 solid;
@@ -204,7 +207,7 @@ body {
 #tblAttendance th.thTeacherAttendance{
     width:140px;
 }
-#tblManageTeacher td,#tblManageStudent td,#tblAttendance td,#tblEditTeacherAttendance td,#tblAddStudentAttendance td{
+#tblManageTeacher td,#tblManageStudent td,#tblAttendance td,#tblEditTeacherAttendance td,#tblAddStudentAttendance td,table.commonTable>tbody>tr>td{
     border-collapse: collapse;
     padding:10px 5px;
     border:1px solid #000;
@@ -330,4 +333,18 @@ body {
     margin-left:100px;
     margin-top:20px;
     margin-bottom:5px;
+}
+
+table.subCommonTable td{
+    border-right:1px solid #000;
+    padding:0 6px;
+}
+table.subCommonTable td:last-child{
+    border-right:0px;
+}
+
+.blockUI h3,.blockUI h4{
+    padding:8px 2px;
+    text-align: center;
+    color:#000;
 }

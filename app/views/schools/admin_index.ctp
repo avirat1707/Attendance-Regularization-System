@@ -62,30 +62,30 @@
             </script>
         </div>
         <div id="Student-Report">
-            <div id="divLoadStudentReport"></div>
-            <script type="text/javascript">
-                $(document).ready(function(){
-                    /**
-                     * Loading Teacher's Section
-                     */
-                    $("#Student-Report").block({
-                        message:'<h3>Loading student report:</h3><h4>Please Wait...</h4><?php echo $this->Html->image("ajaxLoad.gif"); ?>'
+        <div id="divLoadStudents"></div>
+                <script type="text/javascript">
+                    $(document).ready(function(){
+                        /**
+                         * Loading Teacher's Section
+                         */
+                        $("#Student-Report").block({
+                            message:'<h3>Loading all teacher data:</h3><h4>Please Wait...</h4><?php echo $this->Html->image("ajaxLoad.gif"); ?>'
+                        });
+                        $.ajax({
+                            url:"<?php echo $this->Html->url(array('controller'=>'Studentattendances','action'=>'studentReport')); ?>",
+                            type:"GET",
+                            cache:false,
+                            success:function(msg){
+                                $("#divLoadStudents").html(msg);
+                                $("#Student-Report").unblock();
+                            },
+                            error:function(){
+                                $("#Student-Report").html('<div class="error-message">Loading teacher data failed! Please Try again</div>');
+                            }
+                        });
                     });
-                    /*$.ajax({
-                        url:"<?php //echo $this->Html->url(array('controller'=>'Teacherattendances','action'=>'report')); ?>",
-                        type:"GET",
-                        cache:false,
-                        success:function(msg){
-                            $("#divLoadTeacherReport").html(msg);
-                            $("#Teacher-Report").unblock();
-                        },
-                        error:function(){
-                            $("#Teacher-Report").html('<div class="error-message">Loading teacher report failed! Please try again</div>');
-                        }
-                    });
-                    */
-                });
-            </script>
+
+                </script>
         </div>
     </div>
 </div>
