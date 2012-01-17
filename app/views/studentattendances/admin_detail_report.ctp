@@ -14,11 +14,11 @@
     <tbody>
         <?php foreach($detailReport as $key => $val) { ?>
         <tr>
-            <td><?php ?></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td><?php echo $schoolDetail['Block']['name']; ?></td>
+            <td><?php echo $schoolDetail['School']['name']; ?></td>
+            <td><?php echo $schoolDetail['School']['disecode']; ?></td>
+            <td><?php echo $schoolDetail['Cluster']['name']; ?></td>
+            <td><?php echo $schoolDetail['Village']['name']; ?></td>
             <td><?php echo $val['S']['name']; ?></td>
             <td><?php echo date('d-m-Y',strtotime($val['SA']['attendancedate'])); ?></td>
             <td>

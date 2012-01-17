@@ -8,6 +8,7 @@
             <li><a href="#Attendance-Reports">Attendance Report</a></li>
             <li><a href="#Manage-Teacher">Manage Teachers</a></li>
             <li><a href="#Manage-Student">Manage Students</a></li>
+            <li><a href="#Facilities">Infrastructure</a></li>
         </ul>
         <div id="Attendance-Reports">
             <div id="divAttendanceReportsTable">
@@ -344,6 +345,47 @@
                 });
                 
             </script>
+        </div>
+        <div id="Facilities">
+            <table id="tblFacilities" class="commonTable">
+                <thead>
+                    <tr>
+                        <th>Facility Name</th>
+                        <th>Yes</th>
+                        <th>No</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Toilet (Other than Urinals)</td>
+                        <td><input type="radio" name="test1" checked="checked" value="test11" /></td>
+                        <td><input type="radio" name="test1" value="test12" /></td>
+                    </tr>
+                    <tr>
+                        <td>Electricity In School </td>
+                        <td><input type="radio" name="test2" checked="checked" value="test11" /></td>
+                        <td><input type="radio" name="test2" value="test12" /></td>
+                    </tr>
+                    <tr>
+                        <td>Drinking Water Facility</td>
+                        <td><input type="radio" name="test3" checked="checked" value="test11" /></td>
+                        <td><input type="radio" name="test3" value="test12" /></td>
+                    </tr>
+                    <tr>
+                        <td>Play Ground</td>
+                        <td><input type="radio" name="test4" checked="checked" value="test11" /></td>
+                        <td><input type="radio" name="test4" value="test12" /></td>
+                    </tr>
+                    <tr>
+                        <td>Boundary wall</td>
+                        <td><input type="radio" name="test5" value="test11" /></td>
+                        <td><input type="radio" name="test5" checked="checked" value="test12" /></td>
+                    </tr>
+                    <tr style="border:none">
+                        <td style="border:none" colspan="3" align="center"><input type="submit" class="jqueryuiButton" value="Save" /></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
     <script type="text/javascript">

@@ -12,7 +12,10 @@ class TeachersController extends AppController {
     
     function add(){
         $jobtype=$this->Teacher->Jobtype->find('list');
-        $this->set(compact('jobtype'));
+        $caste=$this->Teacher->Caste->find('list');
+        $Teachercategory=$this->Teacher->Teachercategory->find('list');
+        $Standard=$this->Teacher->Standard->find('list');
+        $this->set(compact('jobtype','caste','Teachercategory','Standard'));
         if(!empty($this->data)){
             $this->data['Teacher']['school_id']=$this->Session->read('School.id');
             if($this->data['Teacher']['dob']!=""||$this->data['Teacher']['dob']!=NULL ){
@@ -80,7 +83,10 @@ class TeachersController extends AppController {
             }
         }
         $jobtype=$this->Teacher->Jobtype->find('list');
-        $this->set(compact('jobtype'));
+        $caste=$this->Teacher->Caste->find('list');
+        $Teachercategory=$this->Teacher->Teachercategory->find('list');
+        $Standard=$this->Teacher->Standard->find('list');
+        $this->set(compact('jobtype','caste','Teachercategory','Standard'));
         
     }
     /**

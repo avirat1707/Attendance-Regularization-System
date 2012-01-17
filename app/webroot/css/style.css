@@ -139,7 +139,6 @@ body {
 #divAttendanceReportsTable{
     display:block;
     width:660px;
-    height:490px;
 }
 #tblManageTeacher,#tblManageStudent,#tblAttendance,#tblEditTeacherAttendance,#tblAddStudentAttendance,table.commonTable{
     border-collapse:collapse;
@@ -267,7 +266,7 @@ table.commonTable>thead>tr:nth-child(2){
 /*
 *   Styles to add teacher and add students
 */
-#divAddTeacher label,#divAddStudent label{
+#divAddTeacher label,#divAddStudent label,#divAddSchool label{
     clear:both;
     display:block;
     width:170px;
@@ -280,7 +279,7 @@ table.commonTable>thead>tr:nth-child(2){
     margin-left:50px;
     margin-top:20px;
 }
-#divAddTeacher div,#divAddStudent div{
+#divAddTeacher div,#divAddStudent div,#divAddSchool div{
     clear:both;
     padding-bottom:15px;
     min-height:20px;
@@ -288,7 +287,7 @@ table.commonTable>thead>tr:nth-child(2){
 #TeacherattendanceEditForm{
     margin-top:10px;
 }
-#TeacherattendanceEditForm div.submit{
+#TeacherattendanceEditForm div.submit,#SchoolAdminAddForm div.submit{
     margin-bottom: 10px;
     margin-left: 100px;
     margin-top: 20px;
@@ -324,7 +323,7 @@ table.commonTable>thead>tr:nth-child(2){
     width:115px;
     margin-top:4px;
 }
-#divAddTeacherAttendance .jqueryuiButton{
+#divAddTeacherAttendance .jqueryuiButton,{
     margin-left:100px;
     margin-top:30px;
     margin-bottom:20px;
@@ -347,4 +346,7 @@ table.subCommonTable td:last-child{
     padding:8px 2px;
     text-align: center;
     color:#000;
+}
+#tblManageSchool th.thSchoolName{
+    min-width: 190px;
 }

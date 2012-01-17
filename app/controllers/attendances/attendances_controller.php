@@ -13,16 +13,15 @@
 class AttendancesController extends AppController{
     var $name="Attendances";
     function index(){
+        
         $this->paginate=array(
-            'Attendance'=>array(
-                'recursive'=>-1,
-                'group'=>array('attendancedate'),
-                'order'=>array('attendancedate'=>'desc'),
-                'limit'=>ATTENDANCE_PAGINATION_LIMIT
-            )
+            'recursive'=>-1,
+            'order'=>array('Attendance.attendancedate'=>'desc'),
+            'conditions'=>array('Attendance.school_id'=>$this->Session->read('School.id')),
+            'limit'=>ATTENDANCE_PAGINATION_LIMIT
         );
         $attendanceData=$this->paginate();
-        $this->set(compact('attendanceData'));
+        $this->set(compact('attendanceData',$attendanceData));
         App::import("Model","Section");
         $sections=$this->Attendance->Studentattendance->Student->Section->find('list');
         $standards=$this->Attendance->Studentattendance->Student->Standard->find('list');
@@ -64,11 +63,11 @@ class AttendancesController extends AppController{
         foreach($allSchools as $key => $val) {
             $returnType = 'count';
             $cond = array();
-            $cond = array('Teacher.sex' => 'M');
+            $cond = array('Teacher.sex' => 'M','school_id'=>$allSchools[$key]['School']['id']);
             $maleTeacherCount = $teacherObj->getTeachesByStatus($returnType,$cond);
             
             $cond = array();
-            $cond = array('Teacher.sex' => 'F');
+            $cond = array('Teacher.sex' => 'F','school_id'=>$allSchools[$key]['School']['id']);
             $femaleTeacherCount = $teacherObj->getTeachesByStatus($returnType,$cond);           
             
             $allSchools[$key]['maleTeacherCount'] = $maleTeacherCount;
@@ -78,6 +77,40 @@ class AttendancesController extends AppController{
            $allSchools[$key]['studentCount'] = $allStudentCount;
         }
         $this->set('allSchools',$allSchools);
+    }
+    
+    function admin_dayReport(){
+        App::import('Model','School');
+        $schoolObj = new School;
+        
+        if(isset($this->params['url']['date']))
+          $date = $this->params['url']['date'];
+        else
+            $date = date('Y-m-d');    
+        
+        App::import('Model','Teacherattendance');
+        $teacherObj = new Teacherattendance;
+        
+        App::import('Model','Studentattendance');
+        $studObj = new Studentattendance;
+        
+        $allSchools = $schoolObj->getAllSchools();
+        
+        foreach($allSchools as $key =>$val) {            
+            $cond = array();
+            $cond = array('school_id'=>$val['School']['id'],'present'=>1,'date'=>$date);
+            
+            $allSchools[$key]['Teacher']['totalPresent'] = $teacherObj->dailyAttendence($cond);
+           $allSchools[$key]['Student']['totalPresent'] = $studObj->dailyAttendence($cond);
+ 
+            $cond = array();
+            $cond = array('school_id'=>$val['School']['id'],'present'=>0,'date'=>$date);
+            
+           $allSchools[$key]['Teacher']['totalAbsent'] = $teacherObj->dailyAttendence($cond);
+           $allSchools[$key]['Student']['totalAbsent'] = $studObj->dailyAttendence($cond);
+            $this->set('allSchools',$allSchools);            
+            
+        }
     }
 }
 

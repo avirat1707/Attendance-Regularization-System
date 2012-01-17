@@ -1,5 +1,4 @@
 <?php
-
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -11,9 +10,9 @@
  * @author tirthbodawala
  */
 
+
 class AdministratorsController extends AppController {
-    var $name='Administrators';
-    
+    var $name='Administrators';    
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -33,6 +32,7 @@ class AdministratorsController extends AppController {
             if(empty($adminData)){
                 $this->set('loginError','Invalid Login-ID/Password.');
             }else{
+                $this->Session->delete('School');
                 $this->Session->write('Administrator',$adminData['Administrator']);
                 $this->redirect(array('controller'=>'schools','action'=>'index'));
             }

@@ -35,6 +35,39 @@
 class AppController extends Controller {
     var $helpers=array('Html','Paginator','Text','Session','Form');
     var $components = array('RequestHandler','Session');
+    
+    public function beforeFilter(){
+        $this->checkUser();
+        parent::beforeFilter();
+    }
+    private function checkUser(){
+        $isAdmin=False;
+        $isSchool=False;
+        if($this->Session->check('School')){    
+            $isSchool=true;
+        }else if($this->Session->check('Administrator')){
+            $isAdmin=true;
+        }
+        $controller=$this->params['controller'];
+        $action=$this->params['action'];
+        if(isset($this->params['prefix']) && strtolower($this->params['prefix'])=='admin'){
+            if(!$isAdmin){
+                if($controller!='administrators' || $action!='admin_login'){
+                    $this->redirect(array('prefix'=>'admin','controller'=>'administrators','action'=>'admin_login'));
+                }
+            }else{
+                if($controller=='administrators' && $action=='admin_login'){
+                    $this->redirect(array('prefix'=>'admin','controller'=>'schools','action'=>'admin_index'));
+                }
+            }
+        }else{
+            if(!$isSchool){
+                if($controller!='schools' || $action!='login'){
+                    $this->redirect(array('controller'=>'schools','action'=>'login'));
+                }
+            }
+        }
+    }
     public function sendJson($msg){
         header('Content-type: application/json');
         if(!is_array($msg)){

@@ -96,7 +96,6 @@ class StudentsController extends AppController{
      * @param Numeric $studentId
      */
     function toggleStatus($studentId=NULL){
-        
         if(!$this->RequestHandler->isAjax()){
             $this->redirect(array('controller'=>'schools','action'=>'home'));
         }
@@ -111,10 +110,33 @@ class StudentsController extends AppController{
         $currentStatus=$studentData['Student']['status'];
         $currentStatus==1?$newStatus=0:$newStatus=1;
         $isSaved=$this->Student->saveField('status',$newStatus);
+        if(isset($this->data['Student'])){
+            $isSaved=$this->Student->saveField('inactivereason',$this->data['Student']['inactivereason']);
+        }
+        if($newStatus==1){
+            $isSaved=$this->Student->saveField('inactivereason',"");
+        }
         if($isSaved){
             $this->sendJson('true');
         }
         $this->sendJson('false');
+    }
+    
+    function admin_studentLeft(){
+        
+        App::import('Model','School');
+        $schoolObj = new School;
+        
+        $allSchools = $schoolObj->getAllSchools();
+        
+        foreach($allSchools as $key => $val){
+            $cond = array();
+            $cond = array('school_id'=>$val['School']['id'],'monthYear'=>date('Y-m'));
+
+            $students = $this->Student->leftStudents($cond);
+           $allSchools[$key]['students'] = $students; 
+        }
+        $this->set('allSchools',$allSchools);
     }
     
 }

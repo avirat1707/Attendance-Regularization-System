@@ -87,16 +87,29 @@
         if($currentStatus=="Inactive"){
             $message="Are you sure you want to change the status of student as Active?";
         }else{
-            $message="Are you sure you want to change the status of student as Inactive? Turning status of student to inactive will omit the student from attendance sheet.";
+            $message ="Are you sure you want to change the status of student as Inactive? Turning status of student to inactive will omit the student from attendance sheet.";
+            $message +="<form id='divInactiveReason' style='clear:both;margin-top:10px;'>";
+            $message +="    <h5 style='padding:10px 2px;'>If YES, then please mention reason:</h5>";
+            $message +="    <select name='data[Student][inactivereason]'>";
+            $message +="        <option value='Death'>Death</option>";
+            $message +="        <option value='Drop Out'>Droup Out</option>";
+            $message +="        <option value='Migrate'>Migrate</option>";
+            $message +="        <option value='Other School' selected='selected'>Other School</option>";
+            $message +="    </select>";
+            $message +="</form>";
         }
         var div=$("<div>");
         div.attr({
-            title:"Alert:"
+            title:"Alert:",
+            id:"divAlert"
         });
         div.html($message);
         div.dialog({
             resizable:false,
             modal:true,
+            close:function(){
+                $("#divAlert").remove();
+            },
             buttons:[
                 {
                     text:"Yes",
@@ -109,6 +122,8 @@
                             url:url,
                             cache:false,
                             async:true,
+                            type:"POST",
+                            data:$("#divInactiveReason").serialize(),
                             success:function(msg){
                                 if(msg=="true"){
                                     $currentStatus=$("#studentStatus-"+studentId).html();
@@ -127,13 +142,13 @@
                                 $("#tblManageStudent").unblock();
                             }
                         });
-                        $(this).dialog("close");
+                        $("#divAlert").remove();
                     }
                 },
                 {
                     text:"No",
                     click:function(){
-                        $(this).dialog("close");
+                        $("#divAlert").remove();
                     }
                 }
             ]

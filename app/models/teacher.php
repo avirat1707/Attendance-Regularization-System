@@ -12,7 +12,7 @@
  */
 class Teacher extends AppModel {
     var $name='Teacher';
-    var $belongsTo=array('Jobtype');
+    var $belongsTo=array('Jobtype','Caste','Teachercategory','Standard');
     var $validate=array(
         'name'=>array(
             'Required'=>array(

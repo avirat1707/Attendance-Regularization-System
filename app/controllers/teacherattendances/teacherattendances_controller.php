@@ -25,9 +25,10 @@ class TeacherattendancesController  extends AppController{
                 $this->Teacherattendance->saveField('teacher_id',$Teacherattendance['teacher_id']);
                 $this->Teacherattendance->saveField('attendancedate',$attendanceDate);
                 $this->Teacherattendance->saveField('present',$Teacherattendance['present']);
+                $this->Teacherattendance->saveField('school_id',$this->Session->read('School.id'));
             }
         }
-        $teacher_list=$this->Teacherattendance->Teacher->find('all',array('fields'=>array('id','name','pcn'),'conditions'=>array('school_id'=>$this->Session->read('School.id'))));
+        $teacher_list=$this->Teacherattendance->Teacher->find('all',array('fields'=>array('id','name','pcn'),'conditions'=>array('school_id'=>$this->Session->read('School.id'),'status'=>1)));
         $teacherAttendance=array();
         $i=0;
         foreach($teacher_list as $teacher){
@@ -121,6 +122,53 @@ class TeacherattendancesController  extends AppController{
             $allSchools[$key]['30days'] = $day30Total;
         }
         $this->set('allSchools',$allSchools);
+    }
+    
+    function admin_detailReport($school_id,$for_days){
+        $cond = array();
+        $cond['school_id'] = $school_id;
+        $cond['present'] = 0;        
+        $cond['monthYear'] = date('Y-m');
+        $cond['date'] = date('Y-m-d');
+        
+        App::import('Model','School');
+        $schoolObj = new School;
+        $schoolCond = array();
+        $schoolCond = array('School.id'=>$school_id);
+        $schoolDetail = $schoolObj->getAllSchools('first',$schoolCond);
+        
+        $this->set('schoolDetail',$schoolDetail);
+        
+        if($for_days == 10){
+            $cond['less_cnt'] = 0;
+            $cond['grt_cnt'] = 10;
+            
+        }
+        
+        if($for_days == 20){
+            $cond['less_cnt'] = 11;
+            $cond['grt_cnt'] = 20;
+            
+        }
+        
+        if($for_days == 30){
+            $cond['less_cnt'] = 21;
+            $cond['grt_cnt'] = 31;
+            
+        }
+        
+        $teacherData = $this->Teacherattendance->monthWiseAttendence($cond);
+        
+        $tempArr = array();
+        if(!empty($teacherData)){
+            foreach($teacherData as $key => $val){
+                $tempArr[] = $val['TA']['teacher_id'];
+            }
+        }
+        $cond['teacherIds'] = $tempArr;
+            
+        $detailReport = $this->Teacherattendance->monthWiseDetailAttendence($cond);
+        $this->set('detailReport',$detailReport);
     }
 }
 

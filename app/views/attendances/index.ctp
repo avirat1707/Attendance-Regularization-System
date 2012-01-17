@@ -1,3 +1,7 @@
+<?php
+//pr($this->Paginator);
+//die;
+?>
 <table id="tblAttendance">
     <thead>
         <tr>
@@ -56,6 +60,15 @@
                         </tr>
                     <?php
                 }
+                ?>
+                    <tr>
+                        <td colspan="3" style="text-align: center;border:0;">
+                            <?php echo $this->Paginator->prev('« Previous', null, null, array('class' => 'disabled')); ?>
+                            <?php echo "&nbsp;&nbsp;".$this->Paginator->numbers()."&nbsp;&nbsp;"; ?>
+                            <?php echo $this->Paginator->next('Next »', null, null, array('class' => 'disabled')); ?>
+                        </td>
+                    </tr>
+                <?php
             }
         ?>
     </tbody>
@@ -174,6 +187,11 @@
                                data:$(this).serialize(),
                                success:function(msg){
                                    if(msg!=false){
+                                       // Do Something Here
+                                       currentSelect.attr({
+                                           id:"hrefEditTeacherAttendance"
+                                       });
+                                       currentSelect.html("<span class='green'>Report Present"+'<?php echo $this->Html->image('edit.png');?>'+"</span>");
                                        $("#divModalAddTeacherAttendance").parent().unblock();
                                        $("#divModalAddTeacherAttendance").remove();
                                    }

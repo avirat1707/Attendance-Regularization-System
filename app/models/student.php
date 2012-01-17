@@ -119,6 +119,16 @@ class Student extends AppModel{
             return array();
         }
     }
+    
+    function getStudentsByStatus($returnType,$cond) {        
+        return $this->find($returnType,array('conditions'=>$cond));
+    }
+    function leftStudents($cond) {
+        $sql = "SELECT ST.* FROM students ST INNER JOIN schools S ON (ST.school_id = S.id)
+                WHERE ST.status = 0 and S.id = {$cond['school_id']} AND
+                DATE_FORMAT(ST.modified,'%Y-%m') = DATE_FORMAT(NOW(),'".$cond['monthYear']."')";
+        return $this->query($sql);
+    }
 }
 
 ?>
