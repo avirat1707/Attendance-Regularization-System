@@ -1,0 +1,2 @@
+UPDATE `aviratcars`.`teachercategories` SET `name`='Regular Teacher' WHERE `id`='3';
+UPDATE `aviratcars`.`jobtypes` SET `name`='Regular' WHERE `id`='1';

@@ -1,7 +1,3 @@
-<?php
-//pr($this->Paginator);
-//die;
-?>
 <table id="tblAttendance">
     <thead>
         <tr>
