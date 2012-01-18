@@ -6,7 +6,7 @@
             <th class="thTeacherDOB"><?php echo $this->Paginator->sort('Date Of Birth','dob')?></th>
             <th class="thTeacherPCN"><?php echo $this->Paginator->sort('Pan Card No.','pcn')?></th>
             <th class="thTeacherDOJP"><?php echo $this->Paginator->sort('Date Of Joining Profession','dojp')?></th>
-            <th class="thTeacherDOJS"><?php echo $this->Paginator->sort('Date Of Joining School','dojs')?></th>
+            <th class="thTeacherDOJS"><?php echo $this->Paginator->sort('Working In Same School Since','dojs')?></th>
             <th class="thTeacherSTD"><?php echo $this->Paginator->sort('Std.','Standard.name')?></th>
             <th class="thTeacherEQ"><?php echo $this->Paginator->sort('Educational Qualification','eq')?></th>
             <th class="thTeacherJobType"><?php echo $this->Paginator->sort('Job Type','Jobtype.name')?></th>

@@ -64,8 +64,15 @@
                         $("#txtAddTAD").datepicker({
                             dateFormat:"dd-mm-yy",
                             changeMonth:true,
-                            changeYear:true
+                            changeYear:true,
+                            maxDate:"+0D",
+                            minDate:"-2D",
+                            beforeShowDay:noSunday
                         });
+                        function noSunday(date){
+                            var day = date.getDay();
+                            return [(day > 0), ''];
+                        }; 
                         $(".jqueryuiButton").button();
                         $("#divAddTeacherAttendance").find('.jqueryuiButton').focus();
                         $("#divAddTeacherAttendance").find('#btnContinue').on('click',function(e){
@@ -182,8 +189,15 @@
                                 $("#txtFrmStudentAttendanceDate").datepicker({
                                     dateFormat:"dd-mm-yy",
                                     changeMonth:true,
-                                    changeYear:true
+                                    changeYear:true,
+                                    maxDate:"+0D",
+                                    minDate:"-2D",
+                                    beforeShowDay:noSunday
                                 });
+                                function noSunday(date){
+                                    var day = date.getDay();
+                                    return [(day > 0), ''];
+                                };
                                 $("#btnSelectClassSectionContinue").on('click',function(e){
                                     if($("#txtFrmStudentAttendanceDate").val()==""){
                                         $("#txtFrmStudentAttendanceDate").attr({

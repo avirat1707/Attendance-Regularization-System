@@ -323,7 +323,7 @@ table.commonTable>thead>tr:nth-child(2){
     width:115px;
     margin-top:4px;
 }
-#divAddTeacherAttendance .jqueryuiButton,{
+#divAddTeacherAttendance .jqueryuiButton{
     margin-left:100px;
     margin-top:30px;
     margin-bottom:20px;

@@ -108,7 +108,7 @@
                             }
                         });
                         $("#TeacherattendanceAddForm").unbind();
-                        $("#TeacherattendanceAddForm").on('submit',function(){
+                        $("#TeacherattendanceAddForm").live('submit',function(){
                            $("#divModalEditTeacherAttendance").parent().block({
                                message:'<h3>Saving Attendance Data:</h3><?php echo $this->Html->image("ajaxConfig.gif"); ?>',
                                css:{width:"auto",padding:"20px"}
@@ -175,7 +175,7 @@
                             }
                         });
                         $("#TeacherattendanceAddForm").unbind();
-                        $("#TeacherattendanceAddForm").on('submit',function(){
+                        $("#TeacherattendanceAddForm").live('submit',function(){
                            $("#divModalAddTeacherAttendance").parent().block({
                                message:'<h3>Saving Attendance Data:</h3><?php echo $this->Html->image("ajaxConfig.gif"); ?>',
                                css:{width:"auto",padding:"20px"}
@@ -257,13 +257,14 @@
                         divModalAddStudentAttendance.html(msg);
                         divModalAddStudentAttendance.dialog({
                             modal:true,
-                            width:'600',
+                            width:'auto',
                             resizable:false,
                             close:function(){
                                 $("#divModalAddStudentAttendance").remove();
                             }
                         });
-                        $("#StudentattendanceAddForm").on('submit',function(){
+                        $("#StudentattendanceAddForm").unbind();
+                        $("#StudentattendanceAddForm").live('submit',function(){
                            $("#divModalAddStudentAttendance").parent().block({
                                message:'<h3>Saving Attendance Data:</h3><?php echo $this->Html->image("ajaxConfig.gif"); ?>',
                                css:{width:"auto",padding:"20px"}

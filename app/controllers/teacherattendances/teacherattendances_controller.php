@@ -14,6 +14,7 @@ class TeacherattendancesController  extends AppController{
     var $name="Teacherattendances";
     
     function add($attendanceDate=NULL){
+        $isEdit=false;
         $attendanceDate=date('Y-m-d',strtotime($attendanceDate));
         $this->set(compact('attendanceDate'));
         if($attendanceDate==NULL){
@@ -37,6 +38,7 @@ class TeacherattendancesController  extends AppController{
             $teacherAttendance[$i]['Teacherattendance']['teacher_id']=$teacher['Teacher']['id'];
             $present=$this->Teacherattendance->find('first',array('conditions'=>array('teacher_id'=>$teacher['Teacher']['id'],'attendancedate'=>$attendanceDate)));
             if(!empty($present)){
+                $isEdit=true;
                 $teacherAttendance[$i]['Teacherattendance']['present']=$present['Teacherattendance']['present'];
                 $teacherAttendance[$i]['Teacherattendance']['id']=$present['Teacherattendance']['id'];
             }else{
@@ -45,18 +47,23 @@ class TeacherattendancesController  extends AppController{
             }
             $i++;
         }
-        $this->set(compact('teacherAttendance'));
+        $this->set(compact('teacherAttendance','isEdit'));
     }
     
     function edit($attendanceDate=NULL){
+        $this->set('isEdit',true);
         if($attendanceDate==NULL){
             $this->sendJson('false');
         }
         if(!empty($this->data)){
-            foreach($this->data['Teacherattendance'] as $Teacherattendance){
+            
+            /**
+             * Disabling Editing for teacher attendance
+             */
+            /*foreach($this->data['Teacherattendance'] as $Teacherattendance){
                 $this->Teacherattendance->id=$Teacherattendance['id'];
                 $this->Teacherattendance->saveField('present',$Teacherattendance['present']);
-            }
+            }*/
         }
         $this->paginate=array(
             'Teacherattendance'=>array(

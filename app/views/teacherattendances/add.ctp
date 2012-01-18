@@ -1,5 +1,7 @@
 <?php
-    echo $this->Form->create('Teacherattendance',array('url'=>array('controller'=>'teacherattendances','action'=>'add',$attendanceDate)));
+    if(!$isEdit){
+        echo $this->Form->create('Teacherattendance',array('url'=>array('controller'=>'teacherattendances','action'=>'add',$attendanceDate)));
+    }
 ?>
 <table id="tblEditTeacherAttendance">
     <thead>
@@ -47,5 +49,7 @@
     </tbody>
 </table>
 <?php
-    echo $this->Form->end(array('label'=>'Save Attendance','class'=>'jqueryuiButton'));
+    if(!$isEdit){
+        echo $this->Form->end(array('label'=>'Save Attendance','class'=>'jqueryuiButton'));
+    }
 ?>
